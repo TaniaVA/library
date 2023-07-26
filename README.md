@@ -9,19 +9,13 @@
 ## Запуск приложения
 1. Склонируйте репозиторий на свой компьютер.
 2. Перейдите в директорию с проектом.
-3. Выполните миграции для создания базы данных:
-\'''
-python manage.py migrate
-\''' 
-4. Создайте супер-пользователя к админ-панеле:
-\'''
-python manage.py createsuperuser
-\'''
-5. Запустите сервер разработки
-\'''
-python manage.py runserver
-\'''
-6. Откройте браузер и перейдите на страницу 'http://localhost:8000/' для доступа к API.
+3. Выполните миграции для создания базы данных:  
+<code class="lang-markdown">python manage.py migrate</code>
+4. Создайте супер-пользователя к админ-панеле:  
+<code class="lang-markdown">python manage.py createsuperuser</code>
+5. Запустите сервер разработки  
+<code class="lang-markdown">python manage.py runserver</code>
+6. Откройте браузер и перейдите на страницу <code class="lang-markdown">http://localhost:8000</code>   для доступа к API.
 ## API
 Сервис предоставляет следующие HTTP-методы и эндпоинты:
 - GET /api/books/ - получение списка всех книг
