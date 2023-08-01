@@ -1,0 +1,14 @@
+header .navbar-nav .nav-link {
+    color: #260801;
+    text-decoration: none;
+    margin-right: 2rem;
+    text-transform: uppercase;
+    transition: all .2s ease;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+mane div .blockquote-wrapper {
+    float: left;
+    margin-right: 200px !important;
+}

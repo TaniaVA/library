@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+            {% if author.photo %}
+            <img src="{{ author.photo.url }}" class="card-img-top" alt="author photo" style="width: 18rem;">
+            {% else %}
+            <img src="/media/authors/profile_placeholder.jpg" alt="author photo">
+            {% endif %}
+            <p class="card-text">{% for book in author.books.all %}
+                <a href="{% url 'book_detail' book.pk %}"> {{ book.title }}</a>
+                {% if not forloop.last %}, {% endif %}
+                {% endfor %} </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex">
+        <div class="col-lg-8 px-md-5 py-5">
+            <div class="row pt-md-4">
+                <div class="blog-entry">
+                    <h1 class="mb-3">{{ book.title }}</h1>
+                    <div class="meta-wrap">
+                        <p>Автор(ы):
+                            {% for author in book.authors.all %}
+                            <a href="{% url 'author_detail' author.pk %}">{{ author.first_name }} {{ author.last_name }}</a>
+                            {% empty %}
+                        <p>Нет авторов для этой книги</p>
+                        {% endfor %}
+
+                        </p>
+                        {% if book.image %}
+                        <p><img src="{{ book.image.url }}" alt="{{ book.title }}" width="40%" display="block"
+                                border-radius="15px"></p>
+                        {% else %}
+                        <p><img src="/media/images/placeholder.png" alt="{{ book.title }}" width="40%" display="block"
+                                border-radius="15px">
+                        </p>
+                        {% endif %}
+                        <p>{{ book.body|linebreaksbr }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if user.is_staff %}
+<p><a href="{% url 'book_update' book.pk %}" class="btn btn-outline-info">Изменить книгу</a></p>
+<p><a href="{% url 'book_delete' book.pk %}" class="btn btn-outline-info">Удалить книгу</a></p>
+<p><a href="{% url 'book_list' %}" class="btn btn-outline-info"> Оглавление</a></p>
+{% endif %}
+{% endblock content %}
