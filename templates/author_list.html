@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="col-10" style="margin: 0 auto;">
+    <h1>Список авторов</h1>
+    <div class="row">
+        {% for author in author_list %}
+        <div class="col">
+            <div class="card text-center" style="width: 20rem">
+                {% if author.photo %}
+                <img src="{{ author.photo.url }}" class="card-img-top" alt="author photo">
+                {% else %}
+                <img src="/media/authors/profile_placeholder.jpg" alt="author photo">
+                {% endif %}
+                <div class="card-body" style="margin: 0 0 2px">
+                    <h5 class="card-title">{{ author.first_name }} {{ author.last_name }}:</h5>
+                    <p class="card-text">{% for book in author.books.all %}
+                        <a href="{% url 'book_detail' book.pk %}"> {{ book.title }}</a>
+                        {% if not forloop.last %}, {% endif %}
+                        {% endfor %} </p>
+                    <p><a href="{% url 'author_detail' author.pk %}" class="btn-custom">Подробнее </a>
+                    </p>
+                    {% if user.is_staff %}
+                    <p><a href="{% url 'author_update' author.pk %}"
+                          class="btn btn-outline-info">Изменить автора</a>
+                    </p>
+                    <p><a href="{% url 'author_delete' author.pk %}"
+                          class="btn btn-outline-warning">Удалить автора</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if user.is_staff %}
+    <p style="margin: 25px;"><a href="{% url 'author_create' %}" class="btn btn-outline-success">
+        Добавить автора</a>
+    </p>
+    {% endif %}
+    </form>
+</div>
+{% endblock content %}

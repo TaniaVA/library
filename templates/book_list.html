@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Список книг{% endblock title %}
+
+{% block content %}
+{% if user.is_staff %}
+<p><a href="{% url 'book_create' %}" class="btn btn-outline-success">Добавить книгу</a></p>
+{% endif %}
+{% for book in book_list %}
+<div class="container">
+    <div class="row d-flex">
+        {% if book.image %}
+        <div class="col-xl-4 py-5 px-md-5 text-center">
+            <div class="image-wrapper rounded-circle">
+                <img src="{{ book.image.url }}" alt="" class="rounded-circle" width="80%">
+            </div>
+        </div>
+        <div class="col-xl-8 py-5 px-md-5">
+            {% else %}
+            <div class="col-xl-12 py-5 px-md-5">
+                {% endif %}
+                <div class="col-md-12">
+                    <div class="blog-entry ftco-animate d-md-flex">
+
+                        <div class="text text-2 pl-md-4">
+                            <h3 class="mb-2"><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h3>
+                            <p>Автор(ы):
+                                {% for author in book.authors.all %}
+                            <p>{{ author.first_name }} {{ author.last_name }}</p>
+                            {% empty %}
+                            <p>Нет авторов для этой книги</p>
+                            {% endfor %}
+                            </p>
+                            <p class="mb-4">{{ book.body|truncatewords:50 }}</p>
+                            <p><a href="{% url 'book_detail' book.pk %}" class="btn-custom">Читать дальше <span
+                                    class="ion-ios-arrow-forward"></span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

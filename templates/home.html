@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock title %}
+
+{% block content %}
+
+<style>
+    body {
+        background: url('/media/images/base1.jpg') no-repeat;
+        -moz-background-size: cover; /* Firefox 3.6+ */
+        -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: cover; /* Opera 9.6+ */
+        background-size: cover; /* Современные браузеры */
+    }
+
+    .blockquote {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #260801;
+        text-align: center;
+    }
+
+    .blockquote-wrapper {
+        position: absolute;
+        top: 380px;
+        left: 1000px;
+        transform: translate(-50%, -50%);
+        color: #260801;
+        width: 1100px; /* или другое значение ширины, которое вы хотите задать */
+    }
+
+</style>
+<div class="container">
+    <div class="row d-flex">
+        <div class="col-lg-8 px-md-5 py-5">
+            <div class="row pt-md-4">
+                <div class="right flex-1">
+                    <div class="blockquote-wrapper">
+                        <div class="blockquote">
+                            <blockquote>Литература — это самый приятный способ игнорировать жизнь.
+                            </blockquote>
+                             <cite>Фернадно Пессоа</cite>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

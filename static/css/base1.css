@@ -1,0 +1,38 @@
+header .navbar-nav .nav-link {
+    color: #260801;
+    text-decoration: none;
+    margin-right: 2rem;
+    text-transform: uppercase;
+    transition: all .2s ease;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+header .navbar-brand {
+    color: #260801x;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+header .dropdown {
+    color: #260801;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+header .dropdown-item {
+    color: #260801;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+header .nav-link {
+    color: #260801;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+mane div .blockquote-wrapper {
+    float: left;
+    margin-right: 200px !important;
+}
